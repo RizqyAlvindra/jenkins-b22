@@ -34,6 +34,7 @@ pipeline {
                 sshagent([secret]){
                     sh """ssh -o StrictHostKeyChecking=no ${server} << EOF 
                     cd ${directory}
+                    docker compose down
                     docker compose up -d
                     exit
                     EOF"""

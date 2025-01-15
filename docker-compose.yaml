@@ -3,6 +3,6 @@ services:
     backend:
       container_name: dumbflix-backend
       build: .
-      image: dumbflix-backend:1.0
+      image: alvindra/dumbflix-be-b22:latest
       ports:
         - 5000:5000
