@@ -76,7 +76,7 @@ router.delete("/episode/:id", auth, authAdmin, deleteEpisode);
 
 router.get("*", function (req, res) {
   res.status(404).send({
-    error: "404 Not Found",
+    error: "404 Not Found Woi",
   });
 });
 
