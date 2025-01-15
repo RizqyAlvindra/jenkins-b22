@@ -10,7 +10,7 @@ pipeline {
         stage ('pulling new code'){
             steps{
                 sshagent([secret]){
-                    sh """ssh -p StrictHostKeyChecking=no ${server} << EOF 
+                    sh """ssh -o StrictHostKeyChecking=no ${server} << EOF 
                     cd ${directory}
                     git pull origin ${branch}
                     exit
@@ -21,7 +21,7 @@ pipeline {
         stage ('Build Process'){
             steps{
                 sshagent([secret]){
-                    sh """ssh -p StrictHostKeyChecking=no ${server} << EOF 
+                    sh """ssh -o StrictHostKeyChecking=no ${server} << EOF 
                     cd ${directory}
                     docker build --no-cache -t ${image} .
                     exit
@@ -32,7 +32,7 @@ pipeline {
         stage ('Deploy'){
             steps{
                 sshagent([secret]){
-                    sh """ssh -p StrictHostKeyChecking=no ${server} << EOF 
+                    sh """ssh -o StrictHostKeyChecking=no ${server} << EOF 
                     cd ${directory}
                     docker compose up -d
                     exit
